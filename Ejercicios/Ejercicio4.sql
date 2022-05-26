@@ -1,18 +1,21 @@
 -- Ejercicio 4
 
-/*  TABLAS:
+-- TABLAS:
+-- fabricantes(codigo-nombre)
+CREATE TABLE fabricantes (
+    codFabric   INT auto_increment PRIMARY KEY,
+    nombre      VARCHAR(80)
+);
 
-fabricantes
--codigo
--nombre
-
-articulos
--codigo
--nombre
--precio
--fabric INT
-** AGREGAR ESTA LINEA AL FINAL DEL CREATE TABLE DE ARTICULOS: foreign key (fabric) references fabricantes (codigo)*/
-
+--articulos(codigo-nombre-precio-fabric INT)
+--** AGREGAR ESTA LINEA AL FINAL DEL CREATE TABLE DE ARTICULOS: foreign key (fabric) references fabricantes (codigo)*/
+CREATE TABLE articulos (
+    codArtic    INT PRIMARY KEY,
+    nombre      VARCHAR(80),
+    precio      DOUBLE,
+    fabric      INT,
+    foreign key (fabric) references fabricantes (codFabric)
+);
 
 insert into fabricantes values
 (1,'Sony'),(2,'LG'),(3,'Gigabyte'),(4,'Asus'),(5,'Magnum'),(6,'Kingston'),(7,'AMD'),(8,'Intel'),(9,'WD'),(10,'Genius');
@@ -39,3 +42,39 @@ insert into articulos values
 (118,'Gabinete KIT 646',890,5),
 (119,'Gabinete s/fuente 910',1250,5),
 (120,'BlueRay 3d',9700,2);
+
+--1
+SELECT  a.codArtic, a.nombre, a.precio, f.nombre
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric;
+
+--2
+SELECT  a.nombre as nombreArticulo
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     a.precio > 300;
+
+--3
+SELECT  a.nombre as nombreArticulo, a.precio
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     a.codArtic < 105;
+
+--5
+SELECT  count(*) as cantArticulos
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     a.precio > 700;
+
+--6
+SELECT  a.nombre as nombreArticulo, 
+        a.precio * 1.3 as precioConAumento 
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     f.codFabric IN (2,4,6,8);
+
+--7
+SELECT  avg(a.precio) as promedioPrecio
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     f.codFabric = 9;
