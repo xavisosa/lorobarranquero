@@ -1,6 +1,5 @@
 -- Ejercicio 4
 CREATE DATABASE ejer4;
-
 USE ejer4;
 
 -- TABLAS:
