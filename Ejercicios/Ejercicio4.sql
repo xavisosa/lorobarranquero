@@ -63,6 +63,13 @@ FROM    articulos a, fabricantes f
 WHERE   a.fabric = f.codFabric
 AND     a.codArtic < 105;
 
+--4
+SELECT  a.nombre as nombreArticulo, f.nombre as fabricante
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     a.precio > 500
+AND     f.codFabric > 7;
+
 --5
 SELECT  count(*) as cantArticulos
 FROM    articulos a, fabricantes f
@@ -71,7 +78,7 @@ AND     a.precio > 700;
 
 --6
 SELECT  a.nombre as nombreArticulo, 
-        a.precio * 1.3 as precioConAumento 
+        a.precio * 1.3 as precioConAumento
 FROM    articulos a, fabricantes f
 WHERE   a.fabric = f.codFabric
 AND     f.codFabric IN (2,4,6,8);
@@ -80,4 +87,19 @@ AND     f.codFabric IN (2,4,6,8);
 SELECT  avg(a.precio) as promedioPrecio
 FROM    articulos a, fabricantes f
 WHERE   a.fabric = f.codFabric
-AND     f.codFabric = 9;
+AND     f.codFabric = 6;
+
+--8
+SELECT  min(a.precio) as precioMinimo,
+        max(a.precio) as precioMaximo
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     f.codFabric = 6;
+
+--9
+SELECT  concat(a.nombre, ' - ', f.nombre) as articulo,
+        a.precio * 0.83 as precioConDescuento
+FROM    articulos a, fabricantes f
+WHERE   a.fabric = f.codFabric
+AND     a.nombre like 'a%'
+AND     f.codFabric IN (1,3,5,7,9);
