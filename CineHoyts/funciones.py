@@ -13,11 +13,19 @@ def conectar():
     if conn:
         print('Work It!')
 
-    return conn.cursor()
+    return conn
 
 # CONSULTAR BD
-def obtenerPeliculas(cursor):
+def obtenerTodasLasPeliculas(cursor):
     sql = "SELECT * FROM peliculas"
+    cursor.execute(sql)
+
+    return cursor.fetchall()
+
+def obtenerPeliculaPorId(cursor):
+    id = int(input("Ingresa el ID de la pelicula: "))
+
+    sql = f"SELECT * FROM peliculas WHERE idPelicula = {id}"
     cursor.execute(sql)
 
     return cursor.fetchall()

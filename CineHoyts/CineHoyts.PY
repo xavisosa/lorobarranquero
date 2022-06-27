@@ -5,8 +5,22 @@ def app():
     print('🎞️  📽️  CINE HOYTS 🎬 🍿\n')
     print('📆 CARTELERA DEL DÍA 🎫\n')
 
-    cursor = conectar()
-    listPeliculas = obtenerPeliculas(cursor)
+    conn = conectar()
+    cursor = conn.cursor()
+    
+    #listPeliculas = obtenerTodasLasPeliculas(cursor)
+
+    listPeliculas = obtenerPeliculaPorId(cursor)
+
+    for x in listPeliculas:
+        print(x)
+
+    listPeliculas = obtenerPeliculaPorAnio(cursor)
+
+    for x in listPeliculas:
+        print(x)
+
+    listPeliculas = obtenerPeliculaPorDirector(cursor)
 
     for x in listPeliculas:
         print(x)

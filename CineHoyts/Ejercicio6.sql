@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS cineshoyts;
+
 CREATE DATABASE cineshoyts;
 USE cineshoyts;
 
