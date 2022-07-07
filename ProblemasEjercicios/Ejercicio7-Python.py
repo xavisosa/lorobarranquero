@@ -2,7 +2,7 @@
 
 # EJERCICIO 1
 def concatenarNombAp():
-
+    
     print('Esta función pide nombre y apellido por teclado e imprime el nombre completo')
 
     nombre = input('Ingresa el Nombre: ')
@@ -18,23 +18,35 @@ def calcularPorcentaje():
 
     print('Función una recibe categoria y devuelve el porcetanje a aplicar')
 
-    _______ = input('Ingresar la categoria: ')
+    categoria = input('Ingresar la categoria: ')
 
     porc = 0
 
-    if _______ = 'A':
+    if categoria == 'A':
         porc = 1.1
-    elif ______ = 'B':
+    elif categoria == 'B':
         porc = 1.2
-    _____:
+    else:
         porc = 1.05
     
-    return _____________
+    return porc
 
 if __name__ == '__main__':
     
-    precio = _____(input('Ingresar el monto: '))
+    precio = float(input('Ingresar el monto: '))
 
-    precioDesc = precio __ ___________________________
+    precioAumento = precio * calcularPorcentaje()
 
-    print(f'El precio con aumento es {precioDesc}')
+    print(f'El precio con aumento es {precioAumento}')
+
+# EJERCICIO 3
+
+def calcularCubo(numero):
+
+    return ______ __ 3
+
+if __name__ == '__main__':
+    
+    numero = ____(input('Ingresa el Número para calcular su cubo: '))
+    
+    print(f'{} elevado al cubo es {__________(_________)}')
