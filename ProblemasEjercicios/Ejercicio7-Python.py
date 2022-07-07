@@ -4,10 +4,10 @@ def concatenarNombAp():
 
     print('Esta función pide nombre y apellido por teclado e imprime el nombre completo')
 
-    _____ = input('Ingresa el Nombre: ')
-    apellido = ___________________________
+    nombre = input('Ingresa el Nombre: ')
+    apellido = input('Ingresa el Apellido: ')
 
-    return ________________________
+    return f'{nombre} {apellido}'
 
 if __name__ == '__main__':
-    concatenarNombAp()
+    print(concatenarNombAp())
