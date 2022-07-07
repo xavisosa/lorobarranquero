@@ -36,5 +36,5 @@ if __name__ == '__main__':
     precio = _____(input('Ingresar el monto: '))
 
     precioDesc = precio __ ___________________________
-    
-    print(f'El precio con descuento es {precioDesc}')
+
+    print(f'El precio con aumento es {precioDesc}')
