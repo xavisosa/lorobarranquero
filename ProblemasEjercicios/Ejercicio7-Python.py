@@ -42,11 +42,10 @@ if __name__ == '__main__':
 # EJERCICIO 3
 
 def calcularCubo(numero):
-
-    return ______ __ 3
+    return numero ** 3
 
 if __name__ == '__main__':
     
-    numero = ____(input('Ingresa el Número para calcular su cubo: '))
+    numero = int(input('Ingresa el Número para calcular su cubo: '))
     
-    print(f'{} elevado al cubo es {__________(_________)}')
+    print(f'{numero} elevado al cubo es {calcularCubo(numero)}')
