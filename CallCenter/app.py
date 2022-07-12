@@ -8,17 +8,19 @@ def app():
         print('En estos momentos no podemos acceder a la BD')
         return
 
-    cursor = conn.cursor()
-
     rta = menu() 
 
     while rta != 0:
         if rta == 1:
-            mostrarConsulta(cursor)
+            consultas = mostrarConsulta(conn)
+            for c in consultas:
+                print(c)       
         elif rta == 2:
-            buscarConsultasPorCod(cursor)
+            consulta = buscarConsultasPorCod(conn)
+            for c in consulta:
+                print(c)
         elif rta == 3:
-            ingresarConsulta(cursor)
+            ingresarConsulta(conn)
         else:
             print('Opcion invalida.')
         rta = menu()

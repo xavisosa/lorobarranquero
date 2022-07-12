@@ -17,7 +17,8 @@ def conectar():
         return None  
 
 
-def ingresarConsulta(cursor):
+def ingresarConsulta(conn):
+    cursor = conn.cursor()
     cliente = input('Ingrese Nombre y Apellido del Cliente: ')         
     telefono = input('Ingrese Número de telefono: ')           
     email = input('Ingrese correo electrónico: ')
@@ -25,25 +26,24 @@ def ingresarConsulta(cursor):
     empleadoCC = input('Ingrese el empleado del Callcenter:  ')
 
     sql = "INSERT INTO consultas (Cliente, Telefono, Email, MsjConsulta, EmpleadoCC)"
-    sql += "VALUES (%s, %s, %s, %s, %s)"
+    sql += " VALUES (%s, %s, %s, %s, %s)"
     valores = (cliente, telefono, email, msjConsulta, empleadoCC)
 
     cursor.execute(sql, valores)
+    conn.commit()
     print(f'{cursor.rowcount} consulta guardada!')
 
-def mostrarConsulta(cursor):
+def mostrarConsulta(conn):
+    cursor = conn.cursor()
     sql = "SELECT * FROM consultas"
     cursor.execute(sql)
-
     return cursor.fetchall()
 
-def buscarConsultasPorCod(cursor):
-
+def buscarConsultasPorCod(conn):
+    cursor = conn.cursor()
     cod = int(input("Ingresa el codigo del cliente: "))
-
     sql = f"SELECT * FROM consultas WHERE CodConsulta = {cod}"
     cursor.execute(sql)
-
     return cursor.fetchall()
 
 def menu():
